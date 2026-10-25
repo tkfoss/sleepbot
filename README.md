@@ -6,6 +6,10 @@ plumbing was modernised.
 
 ![SleepBot welcome screens](docs/sleepbot-welcome.png)
 
+## Download
+
+Grab the latest APK from [Releases](https://github.com/tkfoss/sleepbot/releases/latest).
+
 ## Build
 
 ```sh
@@ -14,6 +18,13 @@ plumbing was modernised.
 ```
 
 Requires JDK 17+ and an Android SDK with platform 37 (`local.properties` → `sdk.dir`).
+
+### Releasing
+
+Bump `versionCode`/`versionName` in `app/build.gradle.kts`, then push a matching tag
+(`git tag v4.0.0 && git push origin v4.0.0`). The `Release` workflow builds a signed APK and
+publishes it as a GitHub release. It needs these repo secrets: `KEYSTORE_BASE64`
+(`base64 -i release.jks`), `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`.
 
 Translations in `res/values-*/strings.xml` were ported once from 3.2.8 and are now maintained by hand.
 Strings missing from a language fall back to English.
